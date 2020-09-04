@@ -1,0 +1,35 @@
+# Nmap 7.80 scan initiated Fri Sep  4 13:21:14 2020 as: nmap --script vuln -oN nmap/vuln 10.10.185.104
+Pre-scan script results:
+| broadcast-avahi-dos: 
+|   Discovered hosts:
+|     224.0.0.251
+|   After NULL UDP avahi packet DoS (CVE-2011-1002).
+|_  Hosts are all up (not vulnerable).
+Nmap scan report for 10.10.185.104
+Host is up (0.30s latency).
+Not shown: 994 closed ports
+PORT     STATE SERVICE
+80/tcp   open  http
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+135/tcp  open  msrpc
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+139/tcp  open  netbios-ssn
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+445/tcp  open  microsoft-ds
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+3306/tcp open  mysql
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+|_mysql-vuln-cve2012-2122: ERROR: Script execution failed (use -d to debug)
+3389/tcp open  ms-wbt-server
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+|_sslv2-drown: 
+
+Host script results:
+|_samba-vuln-cve-2012-1182: No accounts left to try
+|_smb-vuln-ms10-054: false
+|_smb-vuln-ms10-061: No accounts left to try
+
+# Nmap done at Fri Sep  4 13:39:43 2020 -- 1 IP address (1 host up) scanned in 1109.14 seconds
