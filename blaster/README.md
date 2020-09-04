@@ -9,12 +9,11 @@ We also see there is a web portal so I go visit this and am greeted with the bel
 
 ![Web](web.png)
 
-Many links that simply lead to other websites or absolutely nowhere. So i decide to run a gobuster scan and see what we can find.
+The webiste contains many links that simply lead to other websites or absolutely nowhere. So i decide to run a gobuster scan and see what we can find.
 
-![Gobuster](gobuster.png)
 While waiting on the gobuster scan to find something useful I also ran another nmap scan this time with the --script vuln to find any possibly vulnerabilities. Our vuln scan unfortunately came back with nothing useful for us.
 
-
+![Gobuster](gobuster.png)
 
 We find a directory called retro. When we navigate to it we are greeted by a website that seems to be about retro arcade games as well as other things.
 
@@ -37,12 +36,14 @@ Once we log in we see a user.txt file on the desktop. We will copy and paste thi
 
 
 ![wade](wade.png)
+
 Task 3 now wants us to find a way further up the chain.
 
 We search the file system and in the Recyle bin find a file. It turns out this is a deleted exe file named hhupd. When you google this file you find the vulnerability CVE-2019-1388. Having the file makes this easier to do, thus we restore it. It seems to need admin privilege to run however so more research is needed on how to run this.
 
 
 ![hhupd](hhupd-restore.png)
+
 We now need to research how to use this exe in our favor. I found a useful video which I followed on how to escalate our privileges using this exploit.
 
 https://www.youtube.com/watch?v=3BQKpPNlTSo
@@ -54,16 +55,18 @@ After getting the exploit done and escalating our priveleges we can then navigat
 
 Now that we have that TryHackMe wants us to return to our machine and use metasploit to get in. So i will open a seperate terminal and start up msfconsole. We tell metasploit to use the given exploit and set it to target Powershell (set target 2). We also make sure our LHOST and LPORT is set.
 
-We then set our payload to run 'windows/meterpreter/reverse_http' and run it as a job.
+We then set our payload to run 'windows/meterpreter/reverse_http' and run it as a job. The syntax for this is run -j.
 
-This spits out some nonsense that we need to copy and paste into the cmd on our remote desktop client with admin priveleges.
+This spits out a command that we need to copy and paste into the cmd on our remote desktop client with admin priveleges.
 
 
 ![payload](payload.png)
+
 Running this on our remote desktop will get us a meterpreter shell within metasploit. Which we can then setup persistance with. We do this by using this command within meterpreter.
 ```
-run persistence -X - this gives us persistance and sets it up to run on reboot meaning unless found out we now have full access to this machine.
+run persistence -X 
 ```
+this gives us persistance and sets it up to run on reboot meaning unless found out we now have full access to this machine.
 
 The room does let us know that we will need to set up a listener via the handler exploit in actual practice for persistence to work.
 
