@@ -1,0 +1,3 @@
+This project is to house my write ups of different tryhackme.org rooms. This is meant to help me track what I have done on each room and maybe to help others who find this repository if they are stuck. 
+
+I am still very new to the world of infosec, so my write-ups in this repo will also seem very rudimentary and not super in depth as I am learning not only how to do these things but also how to do write-ups. I welcome any feedback so long as it is meant to help me learn and grow! 
